@@ -67,14 +67,10 @@ public class BuildJobModel {
     }
 
     if (gitBranch != null && !"".equals(gitBranch)) {
-      lines.add(String.format("🌿 **Git 分支**：%s", gitBranch));
+      lines.add(String.format("🌿 **Git分支**：%s", gitBranch));
     }
 
     lines.add(String.format("📌 **任务ID**：[%s](%s)", jobName, jobUrl));
-
-    if (envName != null) {
-      lines.add(String.format("🌐 **运行环境**：%s", envName));
-    }
 
     lines.add(
         String.format("🚦 **构建状态**：%s",
@@ -84,6 +80,11 @@ public class BuildJobModel {
             )
         )
     );
+
+    if (envName != null) {
+      lines.add(String.format("🌐 **运行环境**：%s", envName));
+    }
+
     lines.add(String.format("⏱️ **持续时间**：%s", duration));
     lines.add(String.format("👤 **执行人员**：%s", executorName));
     if (content != null && !"".equals(content)) {
