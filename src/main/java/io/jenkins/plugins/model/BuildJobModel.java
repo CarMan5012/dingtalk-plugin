@@ -31,6 +31,8 @@ public class BuildJobModel {
 
   private String content;
 
+  private String gitBranch;
+
   public String toMarkdown() {
     java.util.List<String> lines = new java.util.ArrayList<>();
     String titleName = projectName;
@@ -59,11 +61,17 @@ public class BuildJobModel {
 
     lines.add(String.format("### 🚀 [%s](%s)", titleName, projectUrl));
     lines.add("---");
-    lines.add(String.format("📌 **当前任务**：[%s](%s)", jobName, jobUrl));
 
     if (moduleName != null) {
       lines.add(String.format("📦 **模块名称**：%s", moduleName));
     }
+
+    if (gitBranch != null && !"".equals(gitBranch)) {
+      lines.add(String.format("🌿 **Git 分支**：%s", gitBranch));
+    }
+
+    lines.add(String.format("📌 **任务ID**：[%s](%s)", jobName, jobUrl));
+
     if (envName != null) {
       lines.add(String.format("🌐 **运行环境**：%s", envName));
     }

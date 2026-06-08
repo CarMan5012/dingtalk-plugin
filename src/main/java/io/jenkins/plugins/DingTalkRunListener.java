@@ -311,6 +311,7 @@ public class DingTalkRunListener extends RunListener<Run<?, ?>> {
                                     .duration(duration)
                                     .executorName(executorName)
                                     .executorMobile(executorMobile)
+                                    .gitBranch(envVars.get("GIT_BRANCH"))
                                     .content(envVars.expand(content).replace("\\\\n", "\n"))
                                     .build()
                                     .toMarkdown())
