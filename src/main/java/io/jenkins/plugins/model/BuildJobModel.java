@@ -48,7 +48,7 @@ public class BuildJobModel {
     if (projectName != null) {
       String[] parts = projectName.split("-");
       if (parts.length >= 5 && "构建发布".equals(parts[parts.length - 1])) {
-        titleName = parts[0];
+        titleName = parts[0] + " 发版通知";
         String env = parts[1];
         if ("test".equalsIgnoreCase(env)) {
           envName = "测试环境";
@@ -72,7 +72,7 @@ public class BuildJobModel {
       }
     }
 
-    lines.add(String.format("#### %s[%s](%s)", emoji("🚀").trim(), titleName, projectUrl));
+    lines.add(String.format("### %s<font color=\"#1890ff\">%s</font>", emoji("🚀").trim(), titleName));
     lines.add("---");
 
     if (moduleName != null) {

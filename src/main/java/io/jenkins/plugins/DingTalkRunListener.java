@@ -287,7 +287,14 @@ public class DingTalkRunListener extends RunListener<Run<?, ?>> {
 				atMobiles.add(executorMobile);
 			}
 
-            String title = String.format("%s %s", projectName, statusType.getLabel());
+			String displayTitle = projectName;
+			if (projectName != null) {
+				String[] parts = projectName.split("-");
+				if (parts.length >= 5 && "构建发布".equals(parts[parts.length - 1])) {
+					displayTitle = parts[0] + " 发版通知";
+				}
+			}
+			String title = String.format("%s %s", displayTitle, statusType.getLabel());
 
             MessageModel msgModel = item.isRaw()
                     ? MessageModel.builder()
