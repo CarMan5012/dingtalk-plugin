@@ -47,7 +47,7 @@ public class BuildJobModel {
 
     if (projectName != null) {
       String[] parts = projectName.split("-");
-      if (parts.length == 5 && "构建发布".equals(parts[4])) {
+      if (parts.length >= 5 && "构建发布".equals(parts[parts.length - 1])) {
         titleName = parts[0];
         String env = parts[1];
         if ("test".equalsIgnoreCase(env)) {
@@ -61,7 +61,14 @@ public class BuildJobModel {
         } else {
           envName = env;
         }
-        moduleName = parts[2] + "-" + parts[3];
+        StringBuilder moduleBuilder = new StringBuilder();
+        for (int i = 2; i < parts.length - 1; i++) {
+          if (i > 2) {
+            moduleBuilder.append("-");
+          }
+          moduleBuilder.append(parts[i]);
+        }
+        moduleName = moduleBuilder.toString();
       }
     }
 
@@ -73,7 +80,8 @@ public class BuildJobModel {
     }
 
     if (gitBranch != null && !"".equals(gitBranch)) {
-      lines.add(String.format("%s**Git 分支**：%s", emoji("🌿"), gitBranch));
+      String displayBranch = gitBranch.startsWith("origin/") ? gitBranch.substring(7) : gitBranch;
+      lines.add(String.format("%s**Git 分支**：%s", emoji("🌿"), displayBranch));
     }
 
     lines.add(String.format("%s**任务 ID**：[%s](%s)", emoji("📌"), jobName, jobUrl));
