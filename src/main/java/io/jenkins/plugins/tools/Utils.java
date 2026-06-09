@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class Utils {
 
-  /** 字符串分隔符 */
-  public static final String DELIMITER = "\n";
+  /** 字符串分隔符 (使用双换行符确保 Markdown 能正确渲染换行) */
+  public static final String DELIMITER = "\n\n";
 
   /**
    * 创建默认的按钮列表

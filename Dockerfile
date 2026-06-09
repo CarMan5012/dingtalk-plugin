@@ -18,8 +18,8 @@ RUN mvn dependency:go-offline -B
 
 # 拷贝源码并打包
 COPY src ./src
-# 加上 -DskipTests 跳过测试以加快打包速度
-RUN mvn clean package -DskipTests
+# 加上 -DskipTests 跳过测试，加上 -Dspotless.check.skip=true 跳过代码格式检查（解决 Windows 换行符导致的报错）
+RUN mvn clean package -DskipTests -Dspotless.check.skip=true
 
 # 最小化镜像，用于存放打包好的插件包
 FROM alpine:latest

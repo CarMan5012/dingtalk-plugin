@@ -30,6 +30,7 @@ public class DingTalkNotifierConfig extends AbstractDescribableImpl<DingTalkNoti
 	private boolean raw;
 	private boolean disabled;
 	private boolean checked;
+	private boolean enableEmojis;
 
 	private String robotId;
 
@@ -76,6 +77,7 @@ public class DingTalkNotifierConfig extends AbstractDescribableImpl<DingTalkNoti
 			boolean raw,
 			boolean disabled,
 			boolean checked,
+			boolean enableEmojis,
 			String robotId,
 			String robotName,
 			boolean atAll,
@@ -86,6 +88,7 @@ public class DingTalkNotifierConfig extends AbstractDescribableImpl<DingTalkNoti
 		this.raw = raw;
 		this.disabled = disabled;
 		this.checked = checked;
+		this.enableEmojis = enableEmojis;
 		this.robotId = robotId;
 		this.robotName = robotName;
 		this.atAll = atAll;
@@ -97,6 +100,7 @@ public class DingTalkNotifierConfig extends AbstractDescribableImpl<DingTalkNoti
 
 	public DingTalkNotifierConfig(DingTalkRobotConfig robotConfig) {
 		this(
+				false,
 				false,
 				false,
 				false,

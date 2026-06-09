@@ -17,6 +17,9 @@
 			<f:entry title="禁用内置消息" field="raw">
 				<f:checkbox checked="${instance.getRaw()}" class="dt-notifier-config-raw"/>
 			</f:entry>
+			<f:entry title="启用内置符号" field="enableEmojis">
+				<f:checkbox checked="${instance.isEnableEmojis()}"/>
+			</f:entry>
 			<f:entry title="通知时机" field="noticeOccasions">
 				<j:forEach var="noticeOccasionTypeItem"
 					items="${noticeOccasionTypes}">

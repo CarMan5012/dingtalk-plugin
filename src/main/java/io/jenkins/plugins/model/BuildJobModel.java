@@ -33,6 +33,12 @@ public class BuildJobModel {
 
   private String gitBranch;
 
+  private boolean enableEmojis;
+
+  private String emoji(String icon) {
+    return enableEmojis ? icon + " " : "";
+  }
+
   public String toMarkdown() {
     java.util.List<String> lines = new java.util.ArrayList<>();
     String titleName = projectName;
@@ -59,21 +65,22 @@ public class BuildJobModel {
       }
     }
 
-    lines.add(String.format("### 🚀 [%s](%s)", titleName, projectUrl));
+    lines.add(String.format("### %s[%s](%s)", emoji("🚀").trim(), titleName, projectUrl));
     lines.add("---");
 
     if (moduleName != null) {
-      lines.add(String.format("📦 **模块名称**：%s", moduleName));
+      lines.add(String.format("%s**模块名称**：%s", emoji("📦"), moduleName));
     }
 
     if (gitBranch != null && !"".equals(gitBranch)) {
-      lines.add(String.format("🌿 **Git分支**：%s", gitBranch));
+      lines.add(String.format("%s**Git 分支**：%s", emoji("🌿"), gitBranch));
     }
 
-    lines.add(String.format("📌 **任务ID**：[%s](%s)", jobName, jobUrl));
+    lines.add(String.format("%s**任务 ID**：[%s](%s)", emoji("📌"), jobName, jobUrl));
 
     lines.add(
-        String.format("🚦 **构建状态**：%s",
+        String.format("%s**构建状态**：%s",
+            emoji("🚦"),
             Utils.dye(
                 statusType.getLabel(),
                 statusType.getColor()
@@ -82,11 +89,11 @@ public class BuildJobModel {
     );
 
     if (envName != null) {
-      lines.add(String.format("🌐 **运行环境**：%s", envName));
+      lines.add(String.format("%s**运行环境**：%s", emoji("🌐"), envName));
     }
 
-    lines.add(String.format("⏱️ **持续时间**：%s", duration));
-    lines.add(String.format("👤 **执行人员**：%s", executorName));
+    lines.add(String.format("%s**持续时间**：%s", emoji("⏱️"), duration));
+    lines.add(String.format("%s**执行人员**：%s", emoji("👤"), executorName));
     if (content != null && !"".equals(content)) {
       lines.add(content);
     }
