@@ -72,7 +72,7 @@ public class BuildJobModel {
       }
     }
 
-    lines.add(String.format("### %s[%s](%s)", emoji("🚀").trim(), titleName, projectUrl));
+    lines.add(String.format("#### %s[%s](%s)", emoji("🚀").trim(), titleName, projectUrl));
     lines.add("---");
 
     if (moduleName != null) {
