@@ -304,7 +304,7 @@ public class DingTalkRunListener extends RunListener<Run<?, ?>> {
                             .text(envVars.expand(message).replace("\\\\n", "\n"))
                             .build()
                     : MessageModel.builder()
-                            .type(MsgTypeEnum.ACTION_CARD)
+                            .type(MsgTypeEnum.MARKDOWN)
                             .atAll(atAll)
                             .atMobiles(atMobiles)
                             .title(title)
