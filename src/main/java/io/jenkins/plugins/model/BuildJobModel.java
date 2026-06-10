@@ -74,8 +74,8 @@ public class BuildJobModel {
       }
     }
 
-    String robotIcon = emoji("🤖");
-    String displayTitle = robotIcon + "自动化持续集成与部署通知";
+    String robotIcon = emoji("📢");
+    String displayTitle = robotIcon + "平台发版通知";
     if (customTitle != null && !customTitle.isEmpty()) {
       displayTitle = customTitle;
     }

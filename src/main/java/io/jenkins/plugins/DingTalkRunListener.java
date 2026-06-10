@@ -287,8 +287,8 @@ public class DingTalkRunListener extends RunListener<Run<?, ?>> {
 				atMobiles.add(executorMobile);
 			}
 
-			String robotIcon = item.isEnableEmojis() ? "🤖 " : "";
-			String displayTitle = robotIcon + "自动化持续集成与部署通知";
+			String robotIcon = item.isEnableEmojis() ? "📢 " : "";
+			String displayTitle = robotIcon + "平台发版通知";
 			String customTitle = item.getCustomTitle();
 			if (customTitle != null && !customTitle.isEmpty()) {
 				displayTitle = customTitle;
