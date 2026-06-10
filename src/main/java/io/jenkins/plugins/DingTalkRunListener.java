@@ -287,13 +287,7 @@ public class DingTalkRunListener extends RunListener<Run<?, ?>> {
 				atMobiles.add(executorMobile);
 			}
 
-			String displayTitle = projectName;
-			if (projectName != null) {
-				String[] parts = projectName.split("-");
-				if (parts.length >= 5 && "构建发布".equals(parts[parts.length - 1])) {
-					displayTitle = parts[0] + "-发版报告";
-				}
-			}
+			String displayTitle = "🤖 自动化持续集成与部署通知";
 			String customTitle = item.getCustomTitle();
 			if (customTitle != null && !customTitle.isEmpty()) {
 				displayTitle = customTitle;

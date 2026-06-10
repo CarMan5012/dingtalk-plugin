@@ -74,15 +74,12 @@ public class BuildJobModel {
       }
     }
 
-    String displayTitle = titleName + "-发版报告";
+    String displayTitle = "🤖 自动化持续集成与部署通知";
     if (customTitle != null && !customTitle.isEmpty()) {
       displayTitle = customTitle;
     }
     
-    // 添加前缀引语，防止钉钉预览列表强制拼接导致的标题重复
-    lines.add("> 🤖 **自动化持续集成与部署通知**");
-    lines.add("");
-    lines.add(String.format("### %s<font color=\"#1890ff\">%s</font>", emoji("🚀").trim(), displayTitle));
+    lines.add(String.format("### <font color=\"#1890ff\">%s</font>", displayTitle));
     lines.add("---");
 
     if (moduleName != null) {
