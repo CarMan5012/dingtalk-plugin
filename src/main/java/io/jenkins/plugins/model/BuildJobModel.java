@@ -78,6 +78,10 @@ public class BuildJobModel {
     if (customTitle != null && !customTitle.isEmpty()) {
       displayTitle = customTitle;
     }
+    
+    // 添加前缀引语，防止钉钉预览列表强制拼接导致的标题重复
+    lines.add("> 🤖 **自动化持续集成与部署通知**");
+    lines.add("");
     lines.add(String.format("### %s<font color=\"#1890ff\">%s</font>", emoji("🚀").trim(), displayTitle));
     lines.add("---");
 
