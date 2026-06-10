@@ -232,6 +232,7 @@ public class DingTalkRobotConfig implements Describable<DingTalkRobotConfig> {
           .duration("-")
           .executorName(user.getDisplayName())
           .executorMobile(user.getDescription())
+          .enableEmojis(true)
           .build()
           .toMarkdown();
     }
