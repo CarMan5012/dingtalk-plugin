@@ -117,6 +117,7 @@ public class DingTalkNotifierConfig extends AbstractDescribableImpl<DingTalkNoti
 				null,
 				null,
 				null,
+				null,
 				getDefaultNoticeOccasions()
 		);
 	}
