@@ -298,7 +298,7 @@ public class DingTalkRunListener extends RunListener<Run<?, ?>> {
 			if (customTitle != null && !customTitle.isEmpty()) {
 				displayTitle = customTitle;
 			}
-			String title = displayTitle;
+			String title = String.format("%s %s", displayTitle, statusType.getLabel());
 
             MessageModel msgModel = item.isRaw()
                     ? MessageModel.builder()
