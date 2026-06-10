@@ -291,10 +291,14 @@ public class DingTalkRunListener extends RunListener<Run<?, ?>> {
 			if (projectName != null) {
 				String[] parts = projectName.split("-");
 				if (parts.length >= 5 && "构建发布".equals(parts[parts.length - 1])) {
-					displayTitle = parts[0] + " 发版通知";
+					displayTitle = parts[0];
 				}
 			}
-			String title = String.format("%s %s", displayTitle, statusType.getLabel());
+			String customTitle = item.getCustomTitle();
+			if (customTitle != null && !customTitle.isEmpty()) {
+				displayTitle = customTitle;
+			}
+			String title = String.format("%s-发版报告 %s", displayTitle, statusType.getLabel());
 
             MessageModel msgModel = item.isRaw()
                     ? MessageModel.builder()
@@ -314,6 +318,7 @@ public class DingTalkRunListener extends RunListener<Run<?, ?>> {
                                     .projectUrl(projectUrl)
                                     .jobName(jobName)
                                     .jobUrl(jobUrl)
+                                    .customTitle(item.getCustomTitle())
                                     .statusType(statusType)
                                     .duration(duration)
                                     .executorName(executorName)

@@ -33,6 +33,8 @@ public class BuildJobModel {
 
   private String gitBranch;
 
+  private String customTitle;
+
   private boolean enableEmojis;
 
   private String emoji(String icon) {
@@ -48,7 +50,7 @@ public class BuildJobModel {
     if (projectName != null) {
       String[] parts = projectName.split("-");
       if (parts.length >= 5 && "构建发布".equals(parts[parts.length - 1])) {
-        titleName = parts[0] + " 发版通知";
+        titleName = parts[0];
         String env = parts[1];
         if ("test".equalsIgnoreCase(env)) {
           envName = "测试环境";
@@ -72,22 +74,23 @@ public class BuildJobModel {
       }
     }
 
-    lines.add(String.format("### %s<font color=\"#1890ff\">%s</font>", emoji("🚀").trim(), titleName));
+    String displayTitle = (customTitle != null && !customTitle.isEmpty()) ? customTitle : titleName;
+    lines.add(String.format("### %s<font color=\"#1890ff\">%s-发版报告</font>", emoji("🚀").trim(), displayTitle));
     lines.add("---");
 
     if (moduleName != null) {
-      lines.add(String.format("%s**模块名称**：%s", emoji("📦"), moduleName));
+      lines.add(String.format("%s**模块**：%s", emoji("📦"), moduleName));
     }
 
     if (gitBranch != null && !"".equals(gitBranch)) {
       String displayBranch = gitBranch.startsWith("origin/") ? gitBranch.substring(7) : gitBranch;
-      lines.add(String.format("%s**Git 分支**：%s", emoji("🌿"), displayBranch));
+      lines.add(String.format("%s**分支**：%s", emoji("🌿"), displayBranch));
     }
 
-    lines.add(String.format("%s**任务 ID**：[%s](%s)", emoji("📌"), jobName, jobUrl));
+    lines.add(String.format("%s**编号**：[%s](%s)", emoji("📌"), jobName, jobUrl));
 
     lines.add(
-        String.format("%s**构建状态**：%s",
+        String.format("%s**状态**：%s",
             emoji("🚦"),
             Utils.dye(
                 statusType.getLabel(),
@@ -97,11 +100,11 @@ public class BuildJobModel {
     );
 
     if (envName != null) {
-      lines.add(String.format("%s**运行环境**：%s", emoji("🌐"), envName));
+      lines.add(String.format("%s**环境**：%s", emoji("🌐"), envName));
     }
 
-    lines.add(String.format("%s**持续时间**：%s", emoji("⏱️"), duration));
-    lines.add(String.format("%s**执行人员**：%s", emoji("👤"), executorName));
+    lines.add(String.format("%s**耗时**：%s", emoji("⏱️"), duration));
+    lines.add(String.format("%s**触发**：%s", emoji("👤"), executorName));
     if (content != null && !"".equals(content)) {
       lines.add(content);
     }

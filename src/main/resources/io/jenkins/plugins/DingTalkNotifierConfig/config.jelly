@@ -43,6 +43,9 @@
 				</f:entry>
 			</div>
 			<div class="dt-raw-content-builtin">
+				<f:entry field="customTitle" title="自定义标题">
+					<f:textbox placeholder="默认为项目名，支持填写例如：核心服务"/>
+				</f:entry>
 				<f:entry title="通知人" field="at">
 					<f:checkbox title="atAll" field="atAll"/>
 					<f:textarea field="atMobile"/>

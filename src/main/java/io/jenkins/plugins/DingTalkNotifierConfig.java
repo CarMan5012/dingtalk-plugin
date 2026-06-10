@@ -40,6 +40,7 @@ public class DingTalkNotifierConfig extends AbstractDescribableImpl<DingTalkNoti
 
 	private String atMobile;
 
+	private String customTitle;
 	private String content;
 	private String message;
 
@@ -72,6 +73,10 @@ public class DingTalkNotifierConfig extends AbstractDescribableImpl<DingTalkNoti
 		return content == null ? "" : content;
 	}
 
+	public String getCustomTitle() {
+		return customTitle == null ? "" : customTitle;
+	}
+
 	@DataBoundConstructor
 	public DingTalkNotifierConfig(
 			boolean raw,
@@ -82,6 +87,7 @@ public class DingTalkNotifierConfig extends AbstractDescribableImpl<DingTalkNoti
 			String robotName,
 			boolean atAll,
 			String atMobile,
+			String customTitle,
 			String content,
 			String message,
 			Set<String> noticeOccasions) {
@@ -93,6 +99,7 @@ public class DingTalkNotifierConfig extends AbstractDescribableImpl<DingTalkNoti
 		this.robotName = robotName;
 		this.atAll = atAll;
 		this.atMobile = atMobile;
+		this.customTitle = customTitle;
 		this.content = content;
 		this.message = message;
 		this.noticeOccasions = noticeOccasions;
