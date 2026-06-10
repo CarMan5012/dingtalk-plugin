@@ -81,6 +81,16 @@ public class BuildJobModel {
     lines.add(String.format("### %s<font color=\"#1890ff\">%s</font>", emoji("🚀").trim(), displayTitle));
     lines.add("---");
 
+    lines.add(
+        String.format("%s**状态**：%s",
+            emoji("🚦"),
+            Utils.dye(
+                statusType.getLabel(),
+                statusType.getColor()
+            )
+        )
+    );
+
     if (moduleName != null) {
       lines.add(String.format("%s**模块**：%s", emoji("📦"), moduleName));
     }
@@ -91,16 +101,6 @@ public class BuildJobModel {
     }
 
     lines.add(String.format("%s**编号**：[%s](%s)", emoji("📌"), jobName, jobUrl));
-
-    lines.add(
-        String.format("%s**状态**：%s",
-            emoji("🚦"),
-            Utils.dye(
-                statusType.getLabel(),
-                statusType.getColor()
-            )
-        )
-    );
 
     if (envName != null) {
       lines.add(String.format("%s**环境**：%s", emoji("🌐"), envName));
