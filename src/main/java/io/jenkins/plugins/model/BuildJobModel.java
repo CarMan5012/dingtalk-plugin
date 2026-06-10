@@ -74,8 +74,11 @@ public class BuildJobModel {
       }
     }
 
-    String displayTitle = (customTitle != null && !customTitle.isEmpty()) ? customTitle : titleName;
-    lines.add(String.format("### %s<font color=\"#1890ff\">%s-发版报告</font>", emoji("🚀").trim(), displayTitle));
+    String displayTitle = titleName + "-发版报告";
+    if (customTitle != null && !customTitle.isEmpty()) {
+      displayTitle = customTitle;
+    }
+    lines.add(String.format("### %s<font color=\"#1890ff\">%s</font>", emoji("🚀").trim(), displayTitle));
     lines.add("---");
 
     if (moduleName != null) {
