@@ -43,6 +43,11 @@ public class BuildJobModel {
 
   public String toMarkdown() {
     java.util.List<String> lines = new java.util.ArrayList<>();
+    
+    // 插入60个零宽字符（\u200B），这是专门对付钉钉手机端强制提取正文导致列表预览“结巴”的黑科技。
+    // 这会让钉钉抓取到一堆隐形字符，从而把真实正文挤出外层的预览框。
+    lines.add(new String(new char[60]).replace("\0", "\u200B"));
+    
     String titleName = projectName;
     String moduleName = null;
     String envName = null;
